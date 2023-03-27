@@ -1,11 +1,8 @@
-server:
-  port: 8081
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:54322/categories
     username: postgres
-    password: Postgres2023?
+    password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -14,10 +11,3 @@ spring:
       properties:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-    registerWithEureka: true
-    fetchRegistry: true

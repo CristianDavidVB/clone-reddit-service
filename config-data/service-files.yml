@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:54322/files
     username: postgres
-    password: Postgres2023?
+    password: postgres
     driven-class_name: org.postgresql.Driver
   jpa:
     hibernate:

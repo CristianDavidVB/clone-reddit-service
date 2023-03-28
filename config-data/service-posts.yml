@@ -4,12 +4,12 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://lexus:01234@cluster0.95poztr.mongodb.net/?retryWrites=true&w=majority
+      uri: mongodb+srv://lexus:Nqd985x3eUaxWjXv@clonereddit.uocfz7o.mongodb.net/?retryWrites=true&w=majority
       database: service-posts
-
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
     registerWithEureka: true
     fetchRegistry: true
+

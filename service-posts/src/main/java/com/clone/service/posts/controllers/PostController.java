@@ -2,6 +2,7 @@ package com.clone.service.posts.controllers;
 
 import com.clone.service.posts.dtos.PostDTO;
 import com.clone.service.posts.services.PostService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<PostDTO> create(@RequestBody PostDTO postDTO) {
+    public ResponseEntity<PostDTO> create(@Valid @RequestBody PostDTO postDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(postService.create(postDTO));
     }
 

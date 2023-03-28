@@ -1,3 +1,6 @@
+server:
+  port: 8084
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:54322/files
@@ -11,3 +14,10 @@ spring:
       properties:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
+
+eureka:
+    client:
+        serviceUrl:
+          defaultZone: http://localhost:8761/eureka/
+        registerWithEureka: true
+        fetchRegistry: true

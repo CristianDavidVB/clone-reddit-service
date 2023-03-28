@@ -1,11 +1,12 @@
  #MongoDB
  server:
-   port: 8082
+   port: 8086
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://lexus:12345@cluster0.5zyasju.mongodb.net/?retryWrites=true&w=majority
+      uri: mongodb+srv://lexus:01234@cluster0.95poztr.mongodb.net/?retryWrites=true&w=majority
       database: service-posts
+
 eureka:
   client:
     serviceUrl:

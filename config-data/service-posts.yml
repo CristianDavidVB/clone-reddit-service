@@ -1,6 +1,6 @@
- #MongoDB
- server:
-   port: 8086
+#MongoDB
+server:
+  port: 8086
 spring:
   data:
     mongodb:

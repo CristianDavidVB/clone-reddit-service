@@ -1,7 +1,7 @@
 package com.clone.service.categories.services;
 
 import com.clone.service.categories.dtos.CategoryDTO;
-import com.clone.service.categories.models.Category;
+import com.clone.service.categories.models.entity.Category;
 import com.clone.service.categories.repositories.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,8 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.List;

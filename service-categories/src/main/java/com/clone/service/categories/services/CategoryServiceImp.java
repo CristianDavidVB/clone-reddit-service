@@ -1,10 +1,9 @@
 package com.clone.service.categories.services;
 
 import com.clone.service.categories.dtos.CategoryDTO;
-import com.clone.service.categories.models.Category;
+import com.clone.service.categories.models.entity.Category;
 import com.clone.service.categories.repositories.CategoryRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

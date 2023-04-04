@@ -1,10 +1,13 @@
-package com.clone.service.categories.models;
+package com.clone.service.categories.models.entity;
 
+import com.clone.service.categories.models.Post;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "subcategories")
@@ -17,4 +20,7 @@ public class SubCategory {
     @Column(nullable = false, unique = true)
     private String name;
     private Boolean enable;
+
+    @Transient
+    private List<Post> posts;
 }

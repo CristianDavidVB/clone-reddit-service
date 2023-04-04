@@ -1,7 +1,7 @@
 package com.clone.service.categories.services;
 
 import com.clone.service.categories.dtos.SubCategoryDTO;
-import com.clone.service.categories.models.SubCategory;
+import com.clone.service.categories.models.entity.SubCategory;
 import com.clone.service.categories.repositories.SubCategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -20,6 +20,11 @@ public class SubCategoryController {
         return  ResponseEntity.ok(subCategoryService.findAll());
     }
 
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<SubCategoryDTO> findPostsBySubCategoryId(@PathVariable("id")Long id){
+        return ResponseEntity.ok(subCategoryService.findBySubCategoryId(id));
+    }
+
    @GetMapping("/{id}")
    public ResponseEntity<SubCategoryDTO> findById(@PathVariable("id") Long id){
         return ResponseEntity.ok(subCategoryService.findById(id));
@@ -38,5 +43,9 @@ public class SubCategoryController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id")Long id) {subCategoryService.delete(id);
+    }
+
+    public SubCategoryService getSubCategoryService() {
+        return subCategoryService;
     }
 }

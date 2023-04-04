@@ -1,10 +1,11 @@
 package com.clone.service.categories.services;
 
+import com.clone.service.categories.clients.PostClient;
 import com.clone.service.categories.dtos.SubCategoryDTO;
-import com.clone.service.categories.models.SubCategory;
+import com.clone.service.categories.models.Post;
+import com.clone.service.categories.models.entity.SubCategory;
 import com.clone.service.categories.repositories.SubCategoryRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class SubCategoryServiceImp implements SubCategoryService{
     @Autowired
     private SubCategoryRepository subCategoryRepository;
 
+    @Autowired
+    private PostClient postClient;
+
     @Override
     public List<SubCategoryDTO> findAll() {
         List<SubCategory> subCategories = subCategoryRepository.findAll();
@@ -23,6 +27,16 @@ public class SubCategoryServiceImp implements SubCategoryService{
                 //.map(subCategory -> modelMapper.map(subCategory, SubCategoryDTO.class))
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public SubCategoryDTO findBySubCategoryId(Long id) {
+        SubCategory subCategory = subCategoryRepository.getReferenceById(id);
+        if (subCategory != null){
+            List<Post> posts = postClient.findBySubCategoryId(id);
+            subCategory.setPosts(posts);
+        }
+        return convertToDTOWithPosts(subCategory);
     }
 
     @Override
@@ -56,6 +70,14 @@ public class SubCategoryServiceImp implements SubCategoryService{
         SubCategoryDTO subCategoryDTO = new SubCategoryDTO();
         subCategoryDTO.setId(subCategory.getId());
         subCategoryDTO.setName(subCategory.getName());
+        return subCategoryDTO;
+    }
+
+    public SubCategoryDTO convertToDTOWithPosts( SubCategory subCategory){
+        SubCategoryDTO subCategoryDTO = new SubCategoryDTO();
+        subCategoryDTO.setId(subCategory.getId());
+        subCategoryDTO.setName(subCategory.getName());
+        subCategoryDTO.setPosts(subCategory.getPosts());
         return subCategoryDTO;
     }
 

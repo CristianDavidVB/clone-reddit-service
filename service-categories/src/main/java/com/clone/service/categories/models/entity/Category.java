@@ -1,4 +1,4 @@
-package com.clone.service.categories.models;
+package com.clone.service.categories.models.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -21,6 +21,11 @@ public class PostController {
         return ResponseEntity.ok(postService.findAll());
     }
 
+    @GetMapping("/sub-categories/{id}")
+    public ResponseEntity<List<PostDTO>> findBySubCategoryId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(postService.findBySubCategoryId(id));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<PostDTO> findById(@PathVariable("id") String id){
         return ResponseEntity.ok(postService.findById(id));

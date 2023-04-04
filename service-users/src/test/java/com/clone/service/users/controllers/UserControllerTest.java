@@ -43,13 +43,13 @@ class UserControllerTest {
                         .id(1L)
                         .email("prueba@prueba.com")
                         .username("prueba")
-                        .password("123456")
+                        .password("Contraseña1")
                         .photo("photo.png").build(),
                 UserDTO.builder()
                         .id(2L)
                         .email("Soyunaprueba@prueba.com")
                         .username("prueba2")
-                        .password("123456")
+                        .password("Contraseña2")
                         .photo("photo.png").build()
         );
         Mockito.when(userService.findAll()).thenReturn(userDTOS);
@@ -72,7 +72,7 @@ class UserControllerTest {
                 .id(1L)
                 .email("prueba@prueba")
                 .username("Juan")
-                .password("123456")
+                .password("Contraseña1")
                 .photo("photo.png").build();
 
         Mockito.when(userService.findById(1L)).thenReturn(userDTO);
@@ -92,7 +92,7 @@ class UserControllerTest {
                 .id(1L)
                 .email("prueba@prueba")
                 .username("Carlos")
-                .password("contraseña")
+                .password("Contraseña1")
                 .photo("photo.png").build();
         Mockito.when (userService.create(userDTO)).thenReturn(userDTO);
 
@@ -105,7 +105,7 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.email", is("prueba@prueba")))
                 .andExpect(jsonPath("$.username", is("Carlos")))
-                .andExpect(jsonPath("$.password", is("contraseña")))
+                .andExpect(jsonPath("$.password", is("Contraseña1")))
                 .andExpect(jsonPath("$.photo", is("photo.png")));
     }
 
@@ -115,7 +115,7 @@ class UserControllerTest {
                 .id(1L)
                 .email("prueba@prueba")
                 .username("Carlos")
-                .password("contraseña")
+                .password("Contraseña1")
                 .photo("photo.png").build();
         Mockito.when (userService.update(1L, userDTO)).thenReturn(userDTO);
 
@@ -128,7 +128,7 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.email", is("prueba@prueba")))
                 .andExpect(jsonPath("$.username", is("Carlos")))
-                .andExpect(jsonPath("$.password", is("contraseña")))
+                .andExpect(jsonPath("$.password", is("Contraseña1")))
                 .andExpect(jsonPath("$.photo", is("photo.png")));
     }
 

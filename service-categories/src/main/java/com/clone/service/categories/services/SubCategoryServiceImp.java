@@ -1,8 +1,10 @@
 package com.clone.service.categories.services;
 
 import com.clone.service.categories.clients.PostClient;
+import com.clone.service.categories.dtos.CategoryDTO;
 import com.clone.service.categories.dtos.SubCategoryDTO;
 import com.clone.service.categories.models.Post;
+import com.clone.service.categories.models.entity.Category;
 import com.clone.service.categories.models.entity.SubCategory;
 import com.clone.service.categories.repositories.SubCategoryRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -70,6 +72,7 @@ public class SubCategoryServiceImp implements SubCategoryService{
         SubCategoryDTO subCategoryDTO = new SubCategoryDTO();
         subCategoryDTO.setId(subCategory.getId());
         subCategoryDTO.setName(subCategory.getName());
+        subCategoryDTO.setCategoryDTO(convertCategoryDTO(subCategory.getCategory()));
         return subCategoryDTO;
     }
 
@@ -79,6 +82,14 @@ public class SubCategoryServiceImp implements SubCategoryService{
         subCategoryDTO.setName(subCategory.getName());
         subCategoryDTO.setPosts(subCategory.getPosts());
         return subCategoryDTO;
+    }
+
+    public CategoryDTO convertCategoryDTO(Category category){
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setId(category.getId());
+        categoryDTO.setName(category.getName());
+        categoryDTO.setIcon(category.getIcon());
+        return categoryDTO;
     }
 
     public SubCategory convertToEntity(SubCategoryDTO subCategoryDTO){

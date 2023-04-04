@@ -21,6 +21,9 @@ public class SubCategory {
     private String name;
     private Boolean enable;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
     @Transient
     private List<Post> posts;
 }

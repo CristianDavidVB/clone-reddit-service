@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "categories")
 @Data
@@ -18,4 +20,7 @@ public class Category {
     private String name;
     private Boolean enable;
     private String icon;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<SubCategory> subCategories;
 }

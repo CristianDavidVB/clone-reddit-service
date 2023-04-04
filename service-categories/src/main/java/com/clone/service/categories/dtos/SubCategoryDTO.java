@@ -15,6 +15,6 @@ public class SubCategoryDTO {
     private Long id;
     @NotBlank(message = "Name this SubCategory is required")
     private  String name;
-
+    private CategoryDTO categoryDTO;
     private List<Post> posts;
 }

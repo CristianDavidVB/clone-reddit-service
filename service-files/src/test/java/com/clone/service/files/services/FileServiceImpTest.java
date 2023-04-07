@@ -28,12 +28,12 @@ class FileServiceImpTest {
     void testFindAll(){
         File file1 = File.builder()
                 .id(1L)
-                .file("file1.png")
+                .name("file1.png")
                 .build();
 
         File file2 = File.builder()
                 .id(2L)
-                .file("file2.png")
+                .name("file2.png")
                 .build();
         List<File> files = Arrays.asList(file1, file2);
 
@@ -50,7 +50,7 @@ class FileServiceImpTest {
     void testFindById(){
         File file = File.builder()
                 .id(1L)
-                .file("file1.png")
+                .name("file1.png")
                 .build();
 
         Mockito.when (fileRepository.findById(1L)).thenReturn(Optional.of(file));
@@ -58,25 +58,25 @@ class FileServiceImpTest {
         FileDTO fileDTO = fileServiceImp.findById(1L);
 
         assertEquals(file.getId(), fileDTO.getId());
-        assertEquals(file.getFile(), fileDTO.getFile());
+        assertEquals(file.getName(), fileDTO.getName());
     }
 
     @Test
     void testCreate(){
         FileDTO fileDTO = FileDTO.builder()
                 .id(1L)
-                .file("file1.png")
+                .name("file1.png")
                 .build();
         File file = File.builder()
                 .id(1L)
-                .file("file1.png")
+                .name("file1.png")
                 .build();
 
         Mockito.when (fileRepository.save(file)).thenReturn(file);
         FileDTO createdFile = fileServiceImp.create(fileDTO);
 
         assertEquals(file.getId(), createdFile.getId());
-        assertEquals(file.getFile(), createdFile.getFile());
+        assertEquals(file.getName(), createdFile.getName());
 
     }
 
@@ -84,11 +84,11 @@ class FileServiceImpTest {
     void testUpdate(){
         FileDTO fileDTO = FileDTO.builder()
                 .id(1L)
-                .file("file1.png")
+                .name("file1.png")
                 .build();
         File file = File.builder()
                 .id(1L)
-                .file("file1.png")
+                .name("file1.png")
                 .build();
 
        Mockito.when(fileRepository.getReferenceById(1L)).thenReturn(file);
@@ -96,14 +96,14 @@ class FileServiceImpTest {
        FileDTO updatedFile = fileServiceImp.update(1L, fileDTO);
 
         assertEquals(file.getId(), updatedFile.getId());
-        assertEquals(file.getFile(), updatedFile.getFile());
+        assertEquals(file.getName(), updatedFile.getName());
     }
 
     @Test
     void testDelete(){
         File file = File.builder()
                 .id(1L)
-                .file("file1.png")
+                .name("file1.png")
                 .build();
 
        Mockito.doNothing().when(fileRepository).deleteById(1L);

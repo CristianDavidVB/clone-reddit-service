@@ -43,7 +43,7 @@ public class FileServiceImp implements FileService{
     @Override
     public FileDTO update(Long id, FileDTO fileDTO){
         File file = fileRepository.getReferenceById(id);
-        file.setFile(fileDTO.getFile());
+        file.setName(fileDTO.getName());
         File updateFile = fileRepository.save(file);
         return convertToDTO(updateFile);
     }
@@ -54,14 +54,14 @@ public class FileServiceImp implements FileService{
     public FileDTO convertToDTO(File file){
         FileDTO fileDTO = new FileDTO();
         fileDTO.setId(file.getId());
-        fileDTO.setFile(file.getFile());
+        fileDTO.setName(file.getName());
         return fileDTO;
     }
 
     public File convertToEntity(FileDTO fileDTO){
         File file = new File();
         file.setId(fileDTO.getId());
-        file.setFile(fileDTO.getFile());
+        file.setName(fileDTO.getName());
         return file;
     }
 }

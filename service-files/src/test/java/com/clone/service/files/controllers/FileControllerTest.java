@@ -40,10 +40,10 @@ class FileControllerTest {
         List<FileDTO> fileDTOS = Arrays.asList(
                 FileDTO.builder()
                         .id(1L)
-                        .file("file.png").build(),
+                        .name("file.png").build(),
                 FileDTO.builder()
                         .id(2L)
-                        .file("file.png")
+                        .name("file.png")
                         .build()
         );
         Mockito.when(fileService.findAll()).thenReturn(fileDTOS);
@@ -54,16 +54,16 @@ class FileControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id", is(1)))
-                .andExpect(jsonPath("$[0].file", is("file.png")))
+                .andExpect(jsonPath("$[0].name", is("file.png")))
                 .andExpect(jsonPath("$[1].id", is(2)))
-                .andExpect(jsonPath("$[1].file", is("file.png")));
+                .andExpect(jsonPath("$[1].name", is("file.png")));
     }
 
     @Test
     void testCreate() throws Exception {
         FileDTO fileDTO = FileDTO.builder()
                 .id(1L)
-                .file("file.png")
+                .name("file.png")
                 .build();
         Mockito.when(fileService.create(fileDTO)).thenReturn(fileDTO);
 
@@ -74,14 +74,14 @@ class FileControllerTest {
                 .andExpect(content()
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.file", is("file.png")));
+                .andExpect(jsonPath("$.name", is("file.png")));
     }
 
     @Test
     void testUpdate() throws Exception {
         FileDTO fileDTO = FileDTO.builder()
                 .id(1L)
-                .file("file.png")
+                .name("file.png")
                 .build();
         Mockito.when(fileService.update(1L, fileDTO)).thenReturn(fileDTO);
 
@@ -92,7 +92,7 @@ class FileControllerTest {
                 .andExpect(content()
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.file", is("file.png")));
+                .andExpect(jsonPath("$.name", is("file.png")));
     }
 
     @Test

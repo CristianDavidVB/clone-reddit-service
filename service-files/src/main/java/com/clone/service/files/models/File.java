@@ -15,5 +15,7 @@ public class File {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(name = "post_id")
+    private String postId;
 
 }

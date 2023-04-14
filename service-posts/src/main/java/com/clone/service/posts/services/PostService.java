@@ -1,6 +1,7 @@
 package com.clone.service.posts.services;
 
 import com.clone.service.posts.dtos.PostDTO;
+import com.clone.service.posts.models.File;
 
 import java.util.List;
 

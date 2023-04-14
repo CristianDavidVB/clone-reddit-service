@@ -1,5 +1,6 @@
 package com.clone.service.posts.dtos;
 
+import com.clone.service.posts.models.File;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor @NoArgsConstructor @Builder
@@ -21,5 +24,5 @@ public class PostDTO {
     @NotBlank(message = "The description cannot be empty")
     private String description;
     private Long subCategoryId;
-
+    private List<File> files;
 }

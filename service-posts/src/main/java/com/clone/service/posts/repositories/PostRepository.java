@@ -1,6 +1,6 @@
 package com.clone.service.posts.repositories;
 
-import com.clone.service.posts.models.Post;
+import com.clone.service.posts.models.documents.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

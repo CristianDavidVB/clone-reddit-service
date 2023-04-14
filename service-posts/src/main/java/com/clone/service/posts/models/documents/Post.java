@@ -5,8 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.List;
 
 @Document(collection = "posts")
 @Data
@@ -18,4 +21,6 @@ public class Post {
     private String description;
     @Field("sub_category_id")
     private Long subCategoryId;
+    @Transient
+    List<File> files;
 }

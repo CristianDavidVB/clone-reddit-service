@@ -21,6 +21,10 @@ public class FileController {
         return ResponseEntity.ok(fileService.findAll());
     }
 
+    @GetMapping("/posts/{id}")
+    public ResponseEntity<List<FileDTO>> findByPostId(@PathVariable("id") String id) {
+        return ResponseEntity.ok(fileService.findByPostId(id));
+    }
     @GetMapping("/{id}")
     public ResponseEntity<FileDTO> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(fileService.findById(id));

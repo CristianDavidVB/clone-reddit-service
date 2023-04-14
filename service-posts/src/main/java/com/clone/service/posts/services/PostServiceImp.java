@@ -1,9 +1,10 @@
 package com.clone.service.posts.services;
 
+import com.clone.service.posts.clients.FileClient;
 import com.clone.service.posts.dtos.PostDTO;
-import com.clone.service.posts.models.Post;
+import com.clone.service.posts.models.File;
+import com.clone.service.posts.models.documents.Post;
 import com.clone.service.posts.repositories.PostRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class PostServiceImp implements PostService{
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private FileClient fileClient;
 
     @Override
     public List<PostDTO> findAll() {
@@ -35,7 +39,11 @@ public class PostServiceImp implements PostService{
     @Override
     public PostDTO findById(String id) {
         Post post = postRepository.findById(id)
-                .orElseThrow(null);
+                .orElse(null);
+        if (post != null){
+            List<File> files = fileClient.findByPostId(post.getId());
+            post.setFiles(files);
+        }
         return convertToDTO(post);
     }
 
@@ -64,6 +72,7 @@ public class PostServiceImp implements PostService{
         postDTO.setTitle(post.getTitle());
         postDTO.setDescription(post.getDescription());
         postDTO.setSubCategoryId(post.getSubCategoryId());
+        postDTO.setFiles(post.getFiles());
         return postDTO;
     }
 

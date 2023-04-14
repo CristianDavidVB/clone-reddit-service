@@ -1,7 +1,7 @@
 package com.clone.service.posts.services;
 
 import com.clone.service.posts.dtos.PostDTO;
-import com.clone.service.posts.models.Post;
+import com.clone.service.posts.models.documents.Post;
 import com.clone.service.posts.repositories.PostRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

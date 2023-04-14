@@ -27,6 +27,13 @@ public class FileServiceImp implements FileService{
     }
 
     @Override
+    public List<FileDTO> findByPostId(String postId) {
+        List<File> files = fileRepository.findByPostId(postId);
+        return files.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList())   ;
+    }
+    @Override
     public FileDTO findById(Long id) {
         File file = fileRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Files not found with id" + id));
@@ -55,6 +62,7 @@ public class FileServiceImp implements FileService{
         FileDTO fileDTO = new FileDTO();
         fileDTO.setId(file.getId());
         fileDTO.setName(file.getName());
+        fileDTO.setPostId(file.getPostId());
         return fileDTO;
     }
 
@@ -62,6 +70,7 @@ public class FileServiceImp implements FileService{
         File file = new File();
         file.setId(fileDTO.getId());
         file.setName(fileDTO.getName());
+        file.setPostId(fileDTO.getPostId());
         return file;
     }
 }

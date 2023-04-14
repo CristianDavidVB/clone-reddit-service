@@ -14,4 +14,5 @@ public class FileDTO {
     @NotNull(message = "The file must not be null")
     @NotBlank(message = "The file must not be blank")
     private String name;
+    private String postId;
 }

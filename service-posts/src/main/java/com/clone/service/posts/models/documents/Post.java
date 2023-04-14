@@ -1,5 +1,6 @@
-package com.clone.service.posts.models;
+package com.clone.service.posts.models.documents;
 
+import com.clone.service.posts.models.File;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,5 +23,5 @@ public class Post {
     @Field("sub_category_id")
     private Long subCategoryId;
     @Transient
-    List<File> files;
+    private List<File> files;
 }

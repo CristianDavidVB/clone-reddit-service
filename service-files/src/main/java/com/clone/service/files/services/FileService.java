@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface FileService {
     List<FileDTO> findAll();
+    List<FileDTO> findByPostId(String postId);
     FileDTO findById(Long id);
 
     FileDTO create(FileDTO fileDTO);

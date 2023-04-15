@@ -1,5 +1,6 @@
 package com.clone.service.posts.dtos;
 
+import com.clone.service.posts.models.Comment;
 import com.clone.service.posts.models.File;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,4 +26,5 @@ public class PostDTO {
     private String description;
     private Long subCategoryId;
     private List<File> files;
+    private List<Comment> comments;
 }

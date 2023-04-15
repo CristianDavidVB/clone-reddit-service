@@ -15,4 +15,5 @@ public class CommentDTO {
     @Size(min = 1, max = 300 , message = "Comment must be between 1 and 300 characters")
     @Size(max = 300, message = "The text must not exceed 300 characters")
     private String comment;
+    private String postId;
 }

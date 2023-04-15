@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CommentService {
     List<CommentDTO> findAll();
-
+    List<CommentDTO> findByPostId(String postId);
     CommentDTO findById(Long id);
 
     CommentDTO create(CommentDTO commentDTO);

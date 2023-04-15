@@ -1,7 +1,9 @@
 package com.clone.service.posts.services;
 
+import com.clone.service.posts.clients.CommentClient;
 import com.clone.service.posts.clients.FileClient;
 import com.clone.service.posts.dtos.PostDTO;
+import com.clone.service.posts.models.Comment;
 import com.clone.service.posts.models.File;
 import com.clone.service.posts.models.documents.Post;
 import com.clone.service.posts.repositories.PostRepository;
@@ -19,6 +21,9 @@ public class PostServiceImp implements PostService{
 
     @Autowired
     private FileClient fileClient;
+
+    @Autowired
+    private CommentClient commentClient;
 
     @Override
     public List<PostDTO> findAll() {
@@ -42,11 +47,12 @@ public class PostServiceImp implements PostService{
                 .orElse(null);
         if (post != null){
             List<File> files = fileClient.findByPostId(post.getId());
+            List<Comment> comments = commentClient.findByPostId(post.getId());
             post.setFiles(files);
+            post.setComments(comments);
         }
         return convertToDTO(post);
     }
-
     @Override
     public PostDTO create(PostDTO postDTO) {
         Post post = convertToEntity(postDTO);
@@ -73,6 +79,7 @@ public class PostServiceImp implements PostService{
         postDTO.setDescription(post.getDescription());
         postDTO.setSubCategoryId(post.getSubCategoryId());
         postDTO.setFiles(post.getFiles());
+        postDTO.setComments(post.getComments());
         return postDTO;
     }
 

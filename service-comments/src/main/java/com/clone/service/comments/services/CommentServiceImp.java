@@ -26,6 +26,14 @@ public class CommentServiceImp implements CommentService{
     }
 
     @Override
+    public List<CommentDTO> findByPostId(String postId) {
+        List<Comment> comments = commentRepository.findByPostId(postId);
+        return comments.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public CommentDTO findById(Long id) {
         Comment comment = commentRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Comment not found with id" + id));
@@ -56,6 +64,7 @@ public class CommentServiceImp implements CommentService{
         CommentDTO commentDTO = new CommentDTO();
         commentDTO.setId(comment.getId());
         commentDTO.setComment(comment.getComment());
+        commentDTO.setPostId(comment.getPostId());
         return commentDTO;
     }
 
@@ -63,6 +72,7 @@ public class CommentServiceImp implements CommentService{
         Comment comment = new Comment();
         comment.setId(commentDTO.getId());
         comment.setComment(commentDTO.getComment());
+        comment.setPostId(commentDTO.getPostId());
         return comment;
     }
 }

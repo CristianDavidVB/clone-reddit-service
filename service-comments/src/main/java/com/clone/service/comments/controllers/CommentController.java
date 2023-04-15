@@ -20,6 +20,11 @@ public class CommentController {
         return ResponseEntity.ok(commentService.findAll());
     }
 
+    @GetMapping("/post/{id}")
+    public ResponseEntity<List<CommentDTO>> findByPostId(@PathVariable("id") String id){
+        return ResponseEntity.ok(commentService.findByPostId(id));
+    }
+
     @GetMapping("/{id}")
     public  ResponseEntity<CommentDTO> findById(@PathVariable("id") Long id){
         return ResponseEntity.ok(commentService.findById(id));

@@ -3,10 +3,12 @@ package com.clone.service.posts.services;
 import com.clone.service.posts.clients.CommentClient;
 import com.clone.service.posts.clients.FavoriteClient;
 import com.clone.service.posts.clients.FileClient;
+import com.clone.service.posts.clients.LikeClient;
 import com.clone.service.posts.dtos.PostDTO;
 import com.clone.service.posts.models.Comment;
 import com.clone.service.posts.models.Favorite;
 import com.clone.service.posts.models.File;
+import com.clone.service.posts.models.Like;
 import com.clone.service.posts.models.documents.Post;
 import com.clone.service.posts.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class PostServiceImp implements PostService{
 
     @Autowired
     private FavoriteClient favoriteClient;
+
+    @Autowired
+    private LikeClient likeClient;
 
     @Override
     public List<PostDTO> findAll() {
@@ -54,9 +59,12 @@ public class PostServiceImp implements PostService{
             List<File> files = fileClient.findByPostId(post.getId());
             List<Comment> comments = commentClient.findByPostId(post.getId());
             List<Favorite> favorites = favoriteClient.findByPostId(post.getId());
+            List<Like>likes = likeClient.findByPostId(post.getId());
             post.setFiles(files);
             post.setComments(comments);
             post.setFavorites(favorites);
+            post.setLikes(likes);
+
         }
         return convertToDTO(post);
     }
@@ -88,6 +96,7 @@ public class PostServiceImp implements PostService{
         postDTO.setFiles(post.getFiles());
         postDTO.setComments(post.getComments());
         postDTO.setFavorites(post.getFavorites());
+        postDTO.setLikes(post.getLikes());
         return postDTO;
     }
 

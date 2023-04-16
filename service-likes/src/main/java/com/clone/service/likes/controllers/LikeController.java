@@ -19,6 +19,11 @@ public class LikeController {
         return ResponseEntity.ok(likeService.findAll());
     }
 
+    @GetMapping("/post/{id}")
+    public ResponseEntity<List<LikeDTO>> findByPostId(@PathVariable("id") String id){
+        return ResponseEntity.ok(likeService.findByPostId(id));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<LikeDTO> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(likeService.findById(id));

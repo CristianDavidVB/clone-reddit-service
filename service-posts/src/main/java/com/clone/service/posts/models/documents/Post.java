@@ -1,6 +1,7 @@
 package com.clone.service.posts.models.documents;
 
 import com.clone.service.posts.models.Comment;
+import com.clone.service.posts.models.Favorite;
 import com.clone.service.posts.models.File;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,4 +28,6 @@ public class Post {
     private List<File> files;
     @Transient
     private List<Comment> comments;
+    @Transient
+    private List<Favorite> favorites;
 }

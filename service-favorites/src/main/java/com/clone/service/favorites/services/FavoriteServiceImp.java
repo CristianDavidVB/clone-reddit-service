@@ -26,6 +26,13 @@ public class FavoriteServiceImp implements FavoriteService {
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
+    @Override
+    public List<FavoriteDTO> findByPostId(String postId) {
+        List<Favorite> favorites = favoriteRepository.findByPostId(postId);
+        return favorites.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public FavoriteDTO findById(Long id) {
@@ -57,12 +64,14 @@ public class FavoriteServiceImp implements FavoriteService {
     public FavoriteDTO convertToDTO(Favorite favorite){
         FavoriteDTO favoriteDTO = new FavoriteDTO();
         favoriteDTO.setId(favorite.getId());
+        favoriteDTO.setPostId(favorite.getPostId());
         return favoriteDTO;
     }
 
     public Favorite convertToEntity(FavoriteDTO favoriteDTO){
         Favorite favorite = new Favorite();
         favorite.setId(favorite.getId());
+        favorite.setPostId(favorite.getPostId());
         return favorite;
     }
 }

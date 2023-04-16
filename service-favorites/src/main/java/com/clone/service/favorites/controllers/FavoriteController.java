@@ -19,6 +19,11 @@ public class FavoriteController {
         return  ResponseEntity.ok(favoriteService.findAll());
     }
 
+    @GetMapping("/post/{id}")
+    public ResponseEntity<List<FavoriteDTO>> findByPostId(@PathVariable("id") String postId){
+        return ResponseEntity.ok(favoriteService.findByPostId(postId));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<FavoriteDTO> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(favoriteService.findById(id));

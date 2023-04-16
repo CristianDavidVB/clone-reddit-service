@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface FavoriteService {
     List<FavoriteDTO> findAll();
+    List<FavoriteDTO> findByPostId(String postId);
     FavoriteDTO findById(Long id);
 
     FavoriteDTO create(FavoriteDTO favoriteDTO);

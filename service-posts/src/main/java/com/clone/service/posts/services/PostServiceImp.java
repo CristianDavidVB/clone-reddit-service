@@ -1,9 +1,11 @@
 package com.clone.service.posts.services;
 
 import com.clone.service.posts.clients.CommentClient;
+import com.clone.service.posts.clients.FavoriteClient;
 import com.clone.service.posts.clients.FileClient;
 import com.clone.service.posts.dtos.PostDTO;
 import com.clone.service.posts.models.Comment;
+import com.clone.service.posts.models.Favorite;
 import com.clone.service.posts.models.File;
 import com.clone.service.posts.models.documents.Post;
 import com.clone.service.posts.repositories.PostRepository;
@@ -24,6 +26,9 @@ public class PostServiceImp implements PostService{
 
     @Autowired
     private CommentClient commentClient;
+
+    @Autowired
+    private FavoriteClient favoriteClient;
 
     @Override
     public List<PostDTO> findAll() {
@@ -48,8 +53,10 @@ public class PostServiceImp implements PostService{
         if (post != null){
             List<File> files = fileClient.findByPostId(post.getId());
             List<Comment> comments = commentClient.findByPostId(post.getId());
+            List<Favorite> favorites = favoriteClient.findByPostId(post.getId());
             post.setFiles(files);
             post.setComments(comments);
+            post.setFavorites(favorites);
         }
         return convertToDTO(post);
     }
@@ -80,6 +87,7 @@ public class PostServiceImp implements PostService{
         postDTO.setSubCategoryId(post.getSubCategoryId());
         postDTO.setFiles(post.getFiles());
         postDTO.setComments(post.getComments());
+        postDTO.setFavorites(post.getFavorites());
         return postDTO;
     }
 

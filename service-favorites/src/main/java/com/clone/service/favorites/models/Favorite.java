@@ -13,4 +13,6 @@ public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "post_id")
+    private String postId;
 }

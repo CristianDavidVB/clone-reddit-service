@@ -25,6 +25,11 @@ public class PostController {
     public ResponseEntity<List<PostDTO>> findBySubCategoryId(@PathVariable("id") Long id){
         return ResponseEntity.ok(postService.findBySubCategoryId(id));
     }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<List<PostDTO>> findByUserId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(postService.findByUserId(id));
+    }
 //  El posts no va cambiar de ruta  solo va a a traer lo que nosotros le digamos en este caso se implemento uun files
     @GetMapping("/{id}")
     public ResponseEntity<PostDTO> findById(@PathVariable("id") String id){

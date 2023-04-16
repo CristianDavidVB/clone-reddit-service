@@ -25,6 +25,8 @@ public class Post {
     private String description;
     @Field("sub_category_id")
     private Long subCategoryId;
+    @Field("user_id")
+    private Long userId;
     @Transient
     private List<File> files;
     @Transient

@@ -9,4 +9,7 @@ import java.util.List;
 public interface PostRepository extends MongoRepository<Post, String> {
     @Query("{sub_category_id:?0}")
     List<Post> findBySubCategoryId(Long subCategoryId);
+
+    @Query("{user_id:?0}")
+    List<Post> findByUserId(Long userId);
 }

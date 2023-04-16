@@ -1,7 +1,7 @@
 package com.clone.service.users.services;
 
 import com.clone.service.users.dtos.UserDTO;
-import com.clone.service.users.models.User;
+import com.clone.service.users.models.entity.User;
 import com.clone.service.users.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

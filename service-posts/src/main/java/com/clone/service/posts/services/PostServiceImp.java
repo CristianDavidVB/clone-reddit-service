@@ -52,6 +52,14 @@ public class PostServiceImp implements PostService{
     }
 
     @Override
+    public List<PostDTO> findByUserId(Long userId) {
+        List<Post> posts = postRepository.findByUserId(userId);
+        return posts.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public PostDTO findById(String id) {
         Post post = postRepository.findById(id)
                 .orElse(null);
@@ -93,6 +101,7 @@ public class PostServiceImp implements PostService{
         postDTO.setTitle(post.getTitle());
         postDTO.setDescription(post.getDescription());
         postDTO.setSubCategoryId(post.getSubCategoryId());
+        postDTO.setUserId(post.getUserId());
         postDTO.setFiles(post.getFiles());
         postDTO.setComments(post.getComments());
         postDTO.setFavorites(post.getFavorites());
@@ -106,6 +115,7 @@ public class PostServiceImp implements PostService{
         post.setTitle(postDTO.getTitle());
         post.setDescription(postDTO.getDescription());
         post.setSubCategoryId(postDTO.getSubCategoryId());
+        post.setUserId(postDTO.getUserId());
         return post;
     }
 }

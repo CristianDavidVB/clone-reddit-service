@@ -27,6 +27,7 @@ public class PostDTO {
     @NotBlank(message = "The description cannot be empty")
     private String description;
     private Long subCategoryId;
+    private Long userId;
     private List<File> files;
     private List<Comment> comments;
     private List<Favorite> favorites;

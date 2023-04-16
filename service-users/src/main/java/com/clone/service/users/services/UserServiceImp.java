@@ -1,7 +1,9 @@
 package com.clone.service.users.services;
 
+import com.clone.service.users.clients.PostClient;
 import com.clone.service.users.dtos.UserDTO;
-import com.clone.service.users.models.User;
+import com.clone.service.users.models.Post;
+import com.clone.service.users.models.entity.User;
 import com.clone.service.users.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,25 @@ public class UserServiceImp implements UserService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PostClient postClient;
+
     @Override
     public List<UserDTO> findAll() {
         List<User> users = userRepository.findAll();
         return users.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserDTO findByUserId(Long id) {
+        User user = userRepository.getReferenceById(id);
+        if (user != null){
+            List<Post> posts = postClient.findByUserId(id);
+            user.setPosts(posts);
+        }
+        return convertToDTOWithPosts(user);
     }
 
     @Override
@@ -60,6 +75,17 @@ public class UserServiceImp implements UserService{
         userDTO.setUsername(user.getUsername());
         userDTO.setPassword(user.getPassword());
         userDTO.setPhoto(user.getPhoto());
+        return userDTO;
+    }
+
+    private UserDTO convertToDTOWithPosts(User user){
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setUsername(user.getUsername());
+        userDTO.setPassword(user.getPassword());
+        userDTO.setPhoto(user.getPhoto());
+        userDTO.setPosts(user.getPosts());
         return userDTO;
     }
 

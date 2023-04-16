@@ -20,6 +20,11 @@ public class UserController {
         return ResponseEntity.ok(userService.findAll());
     }
 
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<UserDTO> findPostsByUserId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(userService.findByUserId(id));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO>findById(@PathVariable("id") Long id){
         return ResponseEntity.ok(userService.findById(id));

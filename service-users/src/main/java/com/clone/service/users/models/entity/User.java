@@ -1,5 +1,6 @@
-package com.clone.service.users.models;
+package com.clone.service.users.models.entity;
 
+import com.clone.service.users.models.Post;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,4 +25,6 @@ public class User {
     private String username;
     private String password;
     private String photo;
+    @Transient
+    private List<Post> posts;
 }

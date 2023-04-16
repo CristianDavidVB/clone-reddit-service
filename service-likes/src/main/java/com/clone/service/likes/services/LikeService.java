@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface LikeService {
     List<LikeDTO>findAll();
+    List<LikeDTO> findByPostId(String postId);
     LikeDTO findById(Long id);
 
     LikeDTO create(LikeDTO likeDTO);

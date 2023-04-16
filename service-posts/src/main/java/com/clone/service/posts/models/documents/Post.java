@@ -3,6 +3,7 @@ package com.clone.service.posts.models.documents;
 import com.clone.service.posts.models.Comment;
 import com.clone.service.posts.models.Favorite;
 import com.clone.service.posts.models.File;
+import com.clone.service.posts.models.Like;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,4 +31,6 @@ public class Post {
     private List<Comment> comments;
     @Transient
     private List<Favorite> favorites;
+    @Transient
+    private List<Like> likes;
 }

@@ -3,6 +3,7 @@ package com.clone.service.posts.dtos;
 import com.clone.service.posts.models.Comment;
 import com.clone.service.posts.models.Favorite;
 import com.clone.service.posts.models.File;
+import com.clone.service.posts.models.Like;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -29,4 +30,5 @@ public class PostDTO {
     private List<File> files;
     private List<Comment> comments;
     private List<Favorite> favorites;
+    private List<Like> likes;
 }

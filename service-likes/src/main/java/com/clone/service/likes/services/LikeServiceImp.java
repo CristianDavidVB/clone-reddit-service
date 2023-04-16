@@ -27,6 +27,14 @@ public class LikeServiceImp implements LikeService{
     }
 
     @Override
+    public List<LikeDTO> findByPostId(String postId) {
+        List<Like> likes = likeRepository.findByPostId(postId);
+        return likes.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public LikeDTO findById(Long id) {
         Like like = likeRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("Like not found with id" + id));

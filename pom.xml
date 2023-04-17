@@ -23,6 +23,7 @@
     <module>service-users</module>
     <module>service-config</module>
     <module>service-eureka-server</module>
+    <module>service-gateway</module>
 </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

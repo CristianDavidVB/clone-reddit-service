@@ -37,7 +37,7 @@ public class FavoriteServiceImp implements FavoriteService {
     @Override
     public FavoriteDTO findById(Long id) {
         Favorite favorite = favoriteRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Favorite not found with id" + id));
+                .orElseThrow(() -> new EntityNotFoundException("Favorite not found with id " + id));
         return convertToDTO(favorite);
     }
 

@@ -1,4 +1,4 @@
-package com.clone.service.users.controllers;
+package com.clone.service.users.controllers.exceptions;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

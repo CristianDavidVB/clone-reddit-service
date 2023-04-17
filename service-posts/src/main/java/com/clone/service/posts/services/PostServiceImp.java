@@ -11,6 +11,7 @@ import com.clone.service.posts.models.File;
 import com.clone.service.posts.models.Like;
 import com.clone.service.posts.models.documents.Post;
 import com.clone.service.posts.repositories.PostRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +63,7 @@ public class PostServiceImp implements PostService{
     @Override
     public PostDTO findById(String id) {
         Post post = postRepository.findById(id)
-                .orElse(null);
+                .orElseThrow(() -> new EntityNotFoundException("Post not found with id " + id));
         if (post != null){
             List<File> files = fileClient.findByPostId(post.getId());
             List<Comment> comments = commentClient.findByPostId(post.getId());

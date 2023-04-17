@@ -15,6 +15,9 @@ spring:
           uri: lb://service-categories
           predicates:
             - Path=/api/categories/**
+        - id: service-categories
+          uri: lb://service-categories
+          predicates:
             - Path=/api/subcategories/**
         - id: service-comments
           uri: lb://service-comments

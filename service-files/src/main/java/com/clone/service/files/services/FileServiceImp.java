@@ -36,7 +36,7 @@ public class FileServiceImp implements FileService{
     @Override
     public FileDTO findById(Long id) {
         File file = fileRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Files not found with id" + id));
+                .orElseThrow(() -> new EntityNotFoundException("Files not found with id " + id));
         return convertToDTO(file);
     }
 

@@ -1,4 +1,4 @@
-package com.clone.service.posts.controllers;
+package com.clone.service.favorites.controllers.exceptions;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,20 +15,18 @@ import java.util.Map;
 
 @ControllerAdvice
 public class ValidationHandler extends ResponseEntityExceptionHandler {
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatusCode status,
                                                                   WebRequest request) {
-        Map<String, String> errors = new HashMap<>();
+        Map<String, String>errors = new HashMap<>();
 
         ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
+            String fieldFavorite = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
 
-            errors.put(fieldName, errorMessage);
+            errors.put(fieldFavorite, errorMessage);
         });
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 }
-

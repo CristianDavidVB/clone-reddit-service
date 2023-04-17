@@ -44,7 +44,7 @@ public class SubCategoryServiceImp implements SubCategoryService{
     @Override
     public SubCategoryDTO findById(Long id) {
         SubCategory subCategory = subCategoryRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Subcategorie not found with by id" + id));
+                .orElseThrow(() -> new EntityNotFoundException("Subcategorie not found with by id " + id));
         return convertToDTO(subCategory);
     }
 

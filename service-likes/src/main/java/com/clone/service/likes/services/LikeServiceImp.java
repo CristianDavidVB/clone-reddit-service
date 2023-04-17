@@ -37,7 +37,7 @@ public class LikeServiceImp implements LikeService{
     @Override
     public LikeDTO findById(Long id) {
         Like like = likeRepository.findById(id)
-                .orElseThrow(()-> new EntityNotFoundException("Like not found with id" + id));
+                .orElseThrow(()-> new EntityNotFoundException("Like not found with id " + id));
         return convertToDTO(like);
     }
 

@@ -41,7 +41,7 @@ public class UserServiceImp implements UserService{
     @Override
     public UserDTO findById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id" + id));
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
         return convertToDTO(user);
     }
 

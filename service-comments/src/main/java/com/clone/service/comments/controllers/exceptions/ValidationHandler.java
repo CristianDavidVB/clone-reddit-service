@@ -1,4 +1,4 @@
-package com.clone.service.categories.controllers;
+package com.clone.service.comments.controllers.exceptions;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,10 +22,10 @@ public class ValidationHandler extends ResponseEntityExceptionHandler {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
+            String fieldComment = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
 
-            errors.put(fieldName, errorMessage);
+            errors.put(fieldComment, errorMessage);
         });
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
